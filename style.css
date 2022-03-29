@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid {
+    border: 5px black solid;
+    width: 500px;
+    height: 500px;
+    display: grid;
+}
+
+.grid-item {
+    border: 1px lightgrey solid;
+}
+
+.grid-item.hover {
+    background-color: black;
+}
+
