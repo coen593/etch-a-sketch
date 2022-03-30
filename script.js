@@ -1,7 +1,8 @@
+// Set default size
+const DEFAULT_SIZE = 16
+
 // Get Grid and Grid items
-const getGrid = () => {
-    return document.querySelector('.grid')
-}
+const grid = document.querySelector('.grid')
 
 const getGridItems = () => {
     return document.querySelectorAll('.grid-item')
@@ -68,7 +69,6 @@ const addCellHover = () => {
 }
 
 const addCellTouch = () => {
-    const grid = getGrid()
     let clientX, clientY
     grid.addEventListener('touchstart', function(e) {
         clientX = e.touches[0].clientX
@@ -88,16 +88,23 @@ const updateSizeNumber = (size) => {
     sizeNumber.innerHTML = `${size} x ${size}`
 }
 
-const updateGrid = (size) => {
+const removeGridItems = () => {
     const items = getGridItems()
     items.forEach(item => item.remove())
-    const grid = getGrid()
+}
+
+const createNewGrid = (size) => {
     for (let i = 0; i < size**2; i++) {
         const item = document.createElement('div')
         item.classList.add('grid-item')
         item.style.backgroundColor = 'rgb(255, 255, 255)'
         grid.appendChild(item)
     }
+}
+
+const updateGrid = (size) => {
+    removeGridItems()
+    createNewGrid(size)
     grid.style["gridTemplateColumns"] = 'auto '.repeat(size)
     addCellHover()
     addCellTouch()
@@ -139,4 +146,4 @@ colorOptions.forEach(button => {
     })
 })
 
-updateGrid(16)
+updateGrid(DEFAULT_SIZE)
