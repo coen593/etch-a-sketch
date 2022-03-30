@@ -83,6 +83,11 @@ const addCellTouch = () => {
     })
 }
 
+const updateSizeNumber = (size) => {
+    const sizeNumber = document.querySelector('#sizeNumber')
+    sizeNumber.innerHTML = `${size} x ${size}`
+}
+
 const updateGrid = (size) => {
     const items = getGridItems()
     items.forEach(item => item.remove())
@@ -96,6 +101,7 @@ const updateGrid = (size) => {
     grid.style["gridTemplateColumns"] = 'auto '.repeat(size)
     addCellHover()
     addCellTouch()
+    updateSizeNumber(size)
 }
 
 // Event listeners and inputs
@@ -107,6 +113,17 @@ slider.oninput = function() {
     resetGrid()
     updateGrid(this.value)
 }
+
+const removeGrid = document.querySelector('#removeGrid')
+removeGrid.addEventListener('click', () => {
+    const items = getGridItems()
+    items.forEach(item => item.classList.toggle('noBorder'))
+    if (removeGrid.innerHTML === 'Remove grid') {
+        removeGrid.innerHTML = 'Add grid'
+    } else {
+        removeGrid.innerHTML = 'Remove grid'
+    }
+})
 
 const colorOptions = document.querySelectorAll('.colorOptions>.btn')
 let fillType = 'mc'

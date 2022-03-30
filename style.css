@@ -1,7 +1,9 @@
+/* This app is styled mobile-first. Added styles for wider screens follow below */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
 
 .container {
@@ -12,8 +14,10 @@
     height: 100vh;
     margin: 0;
     padding: 0;
+    background-color: aliceblue;
 }
 
+/* Grid and grid items */
 .grid {
     border: 5px black solid;
     width: 350px;
@@ -27,10 +31,22 @@
     user-select: none;
 }
 
-.colorOptions {
+.grid-item.noBorder {
+    border: none;
+}
+
+/* Bottom section */
+.bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Buttons */
+.colorOptions, #resetRemoveButtons {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .btn {
@@ -46,12 +62,24 @@
     background-color: rgb(189, 213, 235);
 }
 
+.btn#removeGrid {
+    background-color: bisque;
+}
+
 .colorOptions .btn.active {
     transform: scale(1.05);
     box-shadow: 0 0 3px;
 }
 
-.footer {
+/* Size description */
+.sizeDescription {
+    display: flex;
+    justify-content: space-between;
+    width: 70vw;
+}
+
+/* Footer */
+#footer {
     text-align: center;
     color:white;
     background-color: navy;
@@ -59,7 +87,51 @@
     width: 100%;
 }
 
-.footer a {
+#footer a {
     text-decoration: none;
     color: white;
+}
+
+/* Slider styling */
+.sizeSlider {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+#rangeSize {
+    width: 75%
+}
+
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 10px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7; 
+    -webkit-transition: .2s; 
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+  
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: navy;
+    cursor: pointer;
+}
+  
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px; 
+    background: navy;
+    cursor: pointer;
 }

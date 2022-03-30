@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etch-a-Sketch</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,500;0,700;0,900;1,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
@@ -15,8 +16,17 @@
         </div>
         <div class="grid"></div>
         <div class="bottom">
-            <button class="btn" id="reset">Reset</button>
-            <input type="range" min="8" max="100" value="16" class="slider" id="rangeSize">
+            <div class="sizeDescription">
+                <label for="rangeSize">Grid size</label>
+                <div id="sizeNumber"></div>
+            </div>
+            <div class="sizeSlider">
+                <input type="range" min="8" max="60" value="16" class="slider" id="rangeSize">
+            </div>
+            <div id="resetRemoveButtons">
+                <button class="btn" id="reset">Reset</button>
+                <button class="btn" id="removeGrid">Remove grid</button>
+            </div>
             <div class="colorOptions">
                 <button class="btn active" id="mc">
                     <span>Single</span> 
@@ -27,7 +37,7 @@
                 <button class="btn" id="er">Eraser</button>
             </div>
         </div>
-        <div class="footer">
+        <div id="footer">
             <p>Etch-a-Sketch was created as part of <a href="https://www.theodinproject.com/lessons/foundations-etch-a-sketch">The Odin Project</a>.</p>
             <p>Copyright &copy; <a href="https://coen593.github.com">Coen Elferink</a></p>
         </div>
