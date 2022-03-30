@@ -1,13 +1,17 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 .container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 
 .grid {
@@ -23,8 +27,23 @@
     user-select: none;
 }
 
-.grid-item.hover {
-    background-color: black;
+.colorOptions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.btn {
+    height: 40px;
+    width: 120px;
+    margin: 5px 10px;
+    border: none;
+    background-color: rgb(236, 154, 154);
+    border-radius: 15px;
+}
+
+.btn#reset {
+    background-color: rgb(189, 213, 235);
 }
 
 .colorOptions .btn.active {
@@ -32,3 +51,15 @@
     box-shadow: 0 0 3px;
 }
 
+.footer {
+    text-align: center;
+    color:white;
+    background-color: navy;
+    font-size: 10px;
+    width: 100%;
+}
+
+.footer a {
+    text-decoration: none;
+    color: white;
+}

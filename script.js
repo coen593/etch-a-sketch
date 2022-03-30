@@ -19,22 +19,27 @@ const getRandomValue = (max) => {
     return Math.floor(Math.random() * max)
 }
 
-const greyValue = () => {
-    const value = getRandomValue(220)
-    return `rgb(${value}, ${value}, ${value})`
+const greyValue = (item) => {
+    const currentGrey = item.style.backgroundColor
+    const currentValue = currentGrey.split(',')[0].split('(')[1]
+    const newGrey = currentValue - 7
+    return `rgb(${newGrey}, ${newGrey}, ${newGrey})`
 }
 
 const colorValue = () => {
-    const red = getRandomValue(220)
-    const green = getRandomValue(220)
-    const blue = getRandomValue(220)
+    const getRandomValue = (max) => {
+        return Math.floor(Math.random() * max)
+    }
+    const red = getRandomValue(256)
+    const green = getRandomValue(256)
+    const blue = getRandomValue(256)
     return `rgb(${red}, ${green}, ${blue})`
 }
 
 // Main functions
 const resetGrid = () => {
     const items = getGridItems()
-    items.forEach(item => item.classList.remove('hover'))
+    items.forEach(item => item.style.backgroundColor = 'rgb(255, 255, 255)')
 }
 
 const fillGridCell = (item) => {
@@ -42,11 +47,11 @@ const fillGridCell = (item) => {
     if (fillType === 'co') {
         color = colorValue()
     } else if (fillType === 'gs') {
-        color = greyValue()
+        color = greyValue(item)
     } else if (fillType === 'er') {
-        color = 'transparent'
+        color = 'rgb(255, 255, 255)'
     } else {
-        color = 'rgb(0, 0, 0)'
+        color = document.querySelector('#color').value
     }
     item.style.backgroundColor = color
 }
@@ -85,6 +90,7 @@ const updateGrid = (size) => {
     for (let i = 0; i < size**2; i++) {
         const item = document.createElement('div')
         item.classList.add('grid-item')
+        item.style.backgroundColor = 'rgb(255, 255, 255)'
         grid.appendChild(item)
     }
     grid.style["gridTemplateColumns"] = 'auto '.repeat(size)
