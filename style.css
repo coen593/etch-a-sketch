@@ -1,3 +1,4 @@
+
 /* This app is styled mobile-first. Added styles for wider screens follow below */
 * {
     margin: 0;
@@ -8,15 +9,15 @@
 
 html, body {
     overscroll-behavior-y: contain;
-}
-
-body {
-    margin: 0;
     padding: 0;
-    border: 3px;
+    margin: 0;
     overflow: hidden;
-    max-height: -webkit-fill-available;
+    width: 100vw;
     height: 100vh;
+
+    @media not all and (hover:hover) {
+        height: var(--app-height);
+    }
 }
 
 .container {
