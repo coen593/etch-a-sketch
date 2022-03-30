@@ -10,6 +10,7 @@ body {
     margin: 0;
     padding: 0;
     border: 3px;
+    overscroll-behavior-y: contain;
 }
 
 .container {
