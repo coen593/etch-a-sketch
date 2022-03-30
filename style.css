@@ -203,7 +203,7 @@ h1 {
     }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 900px) {
     .content {
         flex-direction: row;
         justify-content: center;
@@ -223,8 +223,8 @@ h1 {
     }
 
     .grid {
-        width: 750px;
-        height: 750px;
+        width: 650px;
+        height: 650px;
     }
 
     .sizeDescription {
@@ -237,13 +237,21 @@ h1 {
 
     .btn {
         height: 80px;
-        width: 300px;
-        font-size: 36px;
     }
 }
 
 @media (min-width: 1100px) {
     h1 {
         font-size: 70px;
+    }
+
+    .grid {
+        width: 700px;
+        height: 700px;
+    }
+
+    .btn {
+        width: 200px;
+        font-size: 32px;
     }
 }
