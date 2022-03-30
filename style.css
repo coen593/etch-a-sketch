@@ -6,14 +6,20 @@
     font-family: 'Roboto', sans-serif;
 }
 
+html, body {
+    overscroll-behavior-y: contain;
+}
+
 body {
     margin: 0;
     padding: 0;
     border: 3px;
-    overscroll-behavior-y: contain;
+    overflow: hidden;
+    min-height: -webkit-fill-available;
 }
 
 .container {
+    min-height: -webkit-fill-available;
     height: 100vh;
     display: flex;
     flex-direction: column;
