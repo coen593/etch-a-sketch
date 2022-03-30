@@ -14,7 +14,7 @@ document.addEventListener('mouseup', () => isMouseDown = false)
 
 // Colour functions
 const getRandomValue = (max) => {
-    return Math.floor(Math.random * max)
+    return Math.floor(Math.random() * max)
 }
 
 const greyValue = () => {
@@ -36,7 +36,15 @@ const resetGrid = () => {
 }
 
 const fillGridCell = (item) => {
-    item.classList.add('hover')
+    let color = ''
+    if (fillType === 'co') {
+        color = colorValue()
+    } else if (fillType === 'gs') {
+        color = greyValue()
+    } else {
+        color = 'rgb(0, 0, 0)'
+    }
+    item.style.backgroundColor = color
 }
 
 const addCellHover = () => {
@@ -72,5 +80,19 @@ slider.oninput = function() {
     resetGrid()
     updateGrid(this.value)
 }
+
+const colorOptions = document.querySelectorAll('.colorOptions>.btn')
+let fillType = 'mc'
+colorOptions.forEach(button => {
+    button.addEventListener('click', function() {
+        fillType = this.id
+        colorOptions.forEach(button => {
+            button.classList.remove('active')
+            if (button.id === fillType) {
+                button.classList.add('active')
+            }
+        })
+    })
+})
 
 updateGrid(16)
