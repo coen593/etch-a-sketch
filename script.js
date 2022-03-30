@@ -1,3 +1,22 @@
+document.getElementById( "color-input" ).addEventListener( "focus", function (e) {
+    /* { "id" : null, "container" : "the container for widget(required)", "value" : "rgba(1,1,1,1)(required)" } */
+    var data = {
+        "id" : null,
+        "container" : document.getElementById( "colorizer" ),
+        "value" : document.getElementById( "color-input" ).value
+    }
+    var colorizer = new Gn8Colorize( data );
+    colorizer.init().then( 
+      success => {
+        /* { "hex" : "#ff0000", "rgb" : "rgba(255,0,0,1)", "name" : "red", "theme" : "dark | light" } */
+        document.getElementById( "color-input" ).value = success.rgb;
+        console.log( success );
+      }, error => {
+        console.log( error );
+      } 
+    );
+  });
+
 // Get Grid and Grid items
 const getGrid = () => {
     return document.querySelector('.grid')
@@ -11,6 +30,8 @@ const getGridItems = () => {
 let isMouseDown = false
 document.addEventListener('mousedown', () => isMouseDown = true)
 document.addEventListener('mouseup', () => isMouseDown = false)
+document.addEventListener('touchstart', () => isMouseDown = true)
+document.addEventListener('touchend', () => isMouseDown = false)
 
 // Colour functions
 const getRandomValue = (max) => {
@@ -41,6 +62,8 @@ const fillGridCell = (item) => {
         color = colorValue()
     } else if (fillType === 'gs') {
         color = greyValue()
+    } else if (fillType === 'er') {
+        color = 'transparent'
     } else {
         color = 'rgb(0, 0, 0)'
     }
@@ -58,6 +81,22 @@ const addCellHover = () => {
     })
 }
 
+const addCellTouch = () => {
+    const grid = getGrid()
+    let clientX, clientY
+    grid.addEventListener('touchstart', function(e) {
+        clientX = e.touches[0].clientX
+        clientY = e.touches[0].clientY
+    }, false)
+    grid.addEventListener('touchmove', function(e) {
+        let target
+        clientX = e.touches[0].clientX
+        clientY = e.touches[0].clientY
+        target = document.elementFromPoint(clientX, clientY)
+        if (target.classList.contains('grid-item')) fillGridCell(target)
+    })
+}
+
 const updateGrid = (size) => {
     const items = getGridItems()
     items.forEach(item => item.remove())
@@ -69,6 +108,7 @@ const updateGrid = (size) => {
     }
     grid.style["gridTemplateColumns"] = 'auto '.repeat(size)
     addCellHover()
+    addCellTouch()
 }
 
 // Event listeners and inputs

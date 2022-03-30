@@ -10,16 +10,23 @@
 </head>
 <body>
     <div class="container">
-        <div class="grid">
+        <div class="header">
+            <h1 class="title">Etch-a-Sketch</h1>
         </div>
+        <div class="grid"></div>
         <div class="bottom">
             <button class="btn" id="reset">Reset</button>
             <input type="range" min="8" max="100" value="16" class="slider" id="rangeSize">
             <div class="colorOptions">
-                <button class="btn active" id="mc">Monochrome</button>
+                <button class="btn active" id="mc">Single</button>
                 <button class="btn" id="gs">Greyscale</button>
                 <button class="btn" id="co">Color</button>
+                <button class="btn" id="er">Eraser</button>
             </div>
+        </div>
+        <div class="footer">
+            <p>Etch-a-Sketch was created as part of <a href="https://www.theodinproject.com/lessons/foundations-etch-a-sketch">The Odin Project</a>.</p>
+            <p>Copyright &copy; <a href="https://coen593.github.com">Coen Elferink</a></p>
         </div>
     </div>
     
