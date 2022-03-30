@@ -7,23 +7,10 @@ const getGridItems = () => {
     return document.querySelectorAll('.grid-item')
 }
 
-// Main functions
-const updateGrid = (size) => {
-    const items = getGridItems()
-    items.forEach(item => item.remove())
-    const grid = getGrid()
-    for (let i = 0; i < size**2; i++) {
-        const item = document.createElement('div')
-        item.classList.add('grid-item')
-        grid.appendChild(item)
-    }
-    grid.style["gridTemplateColumns"] = 'auto '.repeat(size)
-}
-
-const resetGrid = () => {
-    const items = getGridItems()
-    items.forEach(item => item.classList.remove('hover'))
-}
+// Mousedown checks
+let isMouseDown = false
+document.addEventListener('mousedown', () => isMouseDown = true)
+document.addEventListener('mouseup', () => isMouseDown = false)
 
 // Colour functions
 const getRandomValue = (max) => {
@@ -42,6 +29,40 @@ const colorValue = () => {
     return `rgb(${red}, ${green}, ${blue})`
 }
 
+// Main functions
+const resetGrid = () => {
+    const items = getGridItems()
+    items.forEach(item => item.classList.remove('hover'))
+}
+
+const fillGridCell = (item) => {
+    item.classList.add('hover')
+}
+
+const addCellHover = () => {
+    const items = getGridItems()
+    items.forEach(item => {
+        item.addEventListener('mouseover', () => {
+            if (isMouseDown) {
+                fillGridCell(item)
+            }
+        })
+    })
+}
+
+const updateGrid = (size) => {
+    const items = getGridItems()
+    items.forEach(item => item.remove())
+    const grid = getGrid()
+    for (let i = 0; i < size**2; i++) {
+        const item = document.createElement('div')
+        item.classList.add('grid-item')
+        grid.appendChild(item)
+    }
+    grid.style["gridTemplateColumns"] = 'auto '.repeat(size)
+    addCellHover()
+}
+
 // Event listeners and inputs
 const resetButton = document.querySelector('#reset')
 resetButton.addEventListener('click', () => resetGrid())
@@ -53,7 +74,3 @@ slider.oninput = function() {
 }
 
 updateGrid(16)
-const items = getGridItems()
-items.forEach(item => {
-    item.addEventListener('mouseover', () => item.classList.add('hover'))
-})

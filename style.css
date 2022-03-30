@@ -12,13 +12,15 @@
 
 .grid {
     border: 5px black solid;
-    width: 500px;
-    height: 500px;
+    width: 350px;
+    height: 350px;
     display: grid;
+    user-select: none;
 }
 
 .grid-item {
     border: 1px lightgrey solid;
+    user-select: none;
 }
 
 .grid-item.hover {
