@@ -1,22 +1,3 @@
-document.getElementById( "color-input" ).addEventListener( "focus", function (e) {
-    /* { "id" : null, "container" : "the container for widget(required)", "value" : "rgba(1,1,1,1)(required)" } */
-    var data = {
-        "id" : null,
-        "container" : document.getElementById( "colorizer" ),
-        "value" : document.getElementById( "color-input" ).value
-    }
-    var colorizer = new Gn8Colorize( data );
-    colorizer.init().then( 
-      success => {
-        /* { "hex" : "#ff0000", "rgb" : "rgba(255,0,0,1)", "name" : "red", "theme" : "dark | light" } */
-        document.getElementById( "color-input" ).value = success.rgb;
-        console.log( success );
-      }, error => {
-        console.log( error );
-      } 
-    );
-  });
-
 // Get Grid and Grid items
 const getGrid = () => {
     return document.querySelector('.grid')
