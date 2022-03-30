@@ -1,10 +1,10 @@
 // Control appheight to keep 100vh in browser correctly
-const appHeight = () => {
-    const doc = document.documentElement
-    doc.style.setProperty('--app-height', `${window.innerHeight}px`)
+const getAppHeight = () => {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
 }
-window.addEventListener('resize', appHeight)
-appHeight()
+getAppHeight()
+window.addEventListener('resize', () => getAppHeight());
 
 // Set default size
 const DEFAULT_SIZE = 16
