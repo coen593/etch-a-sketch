@@ -14,35 +14,38 @@
         <div class="header">
             <h1 class="title">Etch-a-Sketch</h1>
         </div>
-        <div class="grid"></div>
-        <div class="bottom">
-            <div class="sizeDescription">
-                <label for="rangeSize">Grid size</label>
-                <div id="sizeNumber"></div>
+        <div class="content">
+            <div class="top">
+                <div class="grid"></div>
+                <div class="sizeDescription">
+                    <label for="rangeSize">Grid size</label>
+                    <div id="sizeNumber"></div>
+                </div>
+                <div class="sizeSlider">
+                    <input type="range" min="8" max="60" value="16" class="slider" id="rangeSize">
+                </div>
             </div>
-            <div class="sizeSlider">
-                <input type="range" min="8" max="60" value="16" class="slider" id="rangeSize">
+            <div class="bottom">
+                <div id="resetRemoveButtons">
+                    <button class="btn" id="reset">Reset</button>
+                    <button class="btn" id="removeGrid">Remove grid</button>
+                </div>
+                <div class="colorOptions">
+                    <button class="btn active" id="mc">
+                        <span>Single</span> 
+                        <input type="color" id="color" name="color" value="#000000">
+                    </button>
+                    <button class="btn" id="gs">Greyscale</button>
+                    <button class="btn" id="co">Color</button>
+                    <button class="btn" id="er">Eraser</button>
+                </div>
             </div>
-            <div id="resetRemoveButtons">
-                <button class="btn" id="reset">Reset</button>
-                <button class="btn" id="removeGrid">Remove grid</button>
-            </div>
-            <div class="colorOptions">
-                <button class="btn active" id="mc">
-                    <span>Single</span> 
-                    <input type="color" id="color" name="color" value="#000000">
-                </button>
-                <button class="btn" id="gs">Greyscale</button>
-                <button class="btn" id="co">Color</button>
-                <button class="btn" id="er">Eraser</button>
-            </div>
-        </div>
+            
+        </div>  
         <div id="footer">
             <p>Etch-a-Sketch was created as part of <a href="https://www.theodinproject.com/lessons/foundations-etch-a-sketch">The Odin Project</a>.</p>
-            <p>Copyright &copy; <a href="https://coen593.github.com">Coen Elferink</a></p>
+            <p>Copyright &copy; <a href="https://coen593.github.com">Coen</a></p>
         </div>
     </div>
-    
-    
 </body>
 </html>
