@@ -113,7 +113,7 @@ const createNewGrid = (size) => {
 const updateGrid = (size) => {
     removeGridItems()
     createNewGrid(size)
-    grid.style["gridTemplateColumns"] = 'auto '.repeat(size)
+    grid.style["gridTemplateColumns"] = `repeat(${size}, 1fr)`
     addCellHover()
     addCellTouch()
     updateSizeNumber(size)
